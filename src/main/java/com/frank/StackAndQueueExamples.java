@@ -63,33 +63,59 @@ public class StackAndQueueExamples {
 			}
 			
 		System.out.println("\nNumber items in myStack - .size(): " + myStack.size());
+		// 10
+
 		System.out.println("  Getting Top of myStack - .pop(): "   + myStack.pop());  // get and remove the top element
+		// Data is popped
+
 		System.out.println("Number items in myStack - .size(): "   + myStack.size());
+		// 9
+
 		System.out.println("  Last element in Stack - .get(0): "   + myStack.get(0)); // get and leave element at index 0
+		// Geordi
+		// WRONG: Kirk
+
 		System.out.println("   Top Element on Stack - .peek(): "   + myStack.peek()); // get and leave the top element
+		// Geordi
+
 		System.out.println("Number items in myStack - .size(): "   + myStack.size());
+		// 9
 
 		System.out.println("\nPosition of Spock - .search(\"Spock\"): "   + myStack.search("Spock")); // find position of Spock
 		// Note: This next statement will produce an unexpected result....
-		System.out.println("Retrieve Spock- .get(mystack.search(\"Spock\")): "   + myStack.get(myStack.search("Spock"))); // Retrieve Spock
+		// 1
+		// WRONG: 8th spot ... not the index ... SO WHICH IS IT, HUH?
+
+		System.out.println("Retrieve Spock- .get(myStack.search(\"Spock\")): "   + myStack.get(myStack.search("Spock"))); // Retrieve Spock
+		// Geordi
 
 		System.out.println("Number items in myStack - .size(): "   + myStack.size());
+		// 9
 
 		System.out.println("\nCloning myStack - .clone()");
 		//                   cast to the type of the cloned Stack because .clone() returns a generic Object
 		Stack<String> clonedStack = (Stack<String>) myStack.clone();  // Make a copy of a Stack - NOTE: the cast to the type
 
 		System.out.println("Number items in clonedStack - size(): " + clonedStack.size());
-		
+		// 9
+
 		System.out.println("\nClearing clonedStack - .clear()");
 		clonedStack.clear();  // empty cloned stack
 		
 		System.out.println("Number items in clonedStack - .size(): " + clonedStack.size());
+		// 0
+
 		System.out.println("    Number items in myStack - .size(): " + myStack.size());
+		// 9
+
+		// go through the stack until it is empty
+		while(!myStack.isEmpty()) {
+			System.out.println(myStack.pop());
+		}
 			
 		System.out.println("--------------------------------------------");
 /********************************************************************************
- *  Queue - FIFO Collection - like a line at the bank or a drive thru or line at DisneyWorld
+ *  Queue - FIFO Collection - like a line at the bank or a drive-thru or line at DisneyWorld
  *                            used when you want to retrieve data in the same order it was put in
  *
  *  Normal access to a Queue is performed using: .add() ond .poll()
@@ -112,8 +138,8 @@ public class StackAndQueueExamples {
 
 		myQueue.add("Frank");   // add to end of the queue
 		myQueue.add("Daniel");  // add to end of the queue
-		//myQueue.push("Potsey");   // Put at the start of Queue - NOT allowed when using Queue implementation
-		                            //                             IS alllowed when using LinkedList implementation
+//		myQueue.push("Potsey");   // Put at the start of Queue - NOT allowed when using Queue implementation
+//		                                                         IS allowed when using LinkedList implementation
 		myQueue.add("Brian");
 		myQueue.add("Mauli");
 		myQueue.add("Petar");
@@ -123,16 +149,40 @@ public class StackAndQueueExamples {
 	
 		for (String item : myQueue) {
 			System.out.println("Item #" + itemNum++ + " in Queue: " + item);
-			}
+			// Tom at 0 to Frank at 5
+			// WRONG: Frank at 0 to Tom at 5
+		}
 		System.out.println("--------------------------------------------");		
 			
 		System.out.println("\nNumber items in myQueue - .size(): " + myQueue.size());
+		// 6
+
 		System.out.println(" Getting Top of myQueue - .poll(): " + myQueue.poll());
+		// Frank
+
 		System.out.println("Number items in myQueue - .size(): " + myQueue.size());
+		// 5
+
 		System.out.println("   Top Element on Queue - .peek(): " + myQueue.peek());
+		// Daniel
+
 		System.out.println("Number items in myQueue - .size(): " + myQueue.size());
+		// 5
 
 		System.out.println("    Number items in myQueue - .size(): " + myQueue.size());
+		// 5
+
+		System.out.println(myQueue);
+
+//		for (int i = 0; i < myQueue.size(); i++) {
+//			System.out.println(myQueue.poll());
+//		}
+		// size() updates, so it won't stay the same ... it will mf change because poll() kicks
+		//  an item off every time <3
+
+		while(!myQueue.isEmpty()) {
+			System.out.println(myQueue.poll());
+		}
 			
 		System.out.println("--------------------------------------------");	
 	}
